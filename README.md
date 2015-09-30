@@ -1,11 +1,13 @@
-# scaffolds [![NPM version](https://badge.fury.io/js/scaffolds.svg)](http://badge.fury.io/js/scaffolds)  [![Build Status](https://travis-ci.org/doowb/scaffolds.svg)](https://travis-ci.org/doowb/scaffolds) 
+# scaffolds
 
 > Make and read scaffold manifest files.
 
-## Install with [npm](npmjs.org)
+**WIP** Initial thoughts on scaffolds.
 
-```bash
-npm i scaffolds --save
+Install with [npm](https://www.npmjs.com/)
+
+```sh
+$ npm i scaffolds --save
 ```
 
 ## Usage
@@ -14,36 +16,29 @@ npm i scaffolds --save
 var scaffolds = require('scaffolds');
 ```
 
-## API
-<!-- add a path or glob pattern for files with code comments to use for docs  -->
-{%= apidocs("index.js") %}
-
-## Related projects
-<!-- add an array of related projects, then un-escape the helper -->
-{%= related([]) %}
-
 ## Running tests
-Install dev dependencies.
 
-```bash
-npm i -d && npm test
+Install dev dependencies:
+
+```sh
+$ npm i -d && npm test
 ```
 
-
 ## Contributing
-Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/doowb/scaffolds/issues)
 
+Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/doowb/scaffolds/issues/new).
 
 ## Author
 
 **Brian Woodward**
- 
+
 + [github/doowb](https://github.com/doowb)
-+ [twitter/doowb](http://twitter.com/doowb) 
++ [twitter/doowb](http://twitter.com/doowb)
 
 ## License
+
 Copyright © 2015 Brian Woodward
-Released under the MIT license
+Released under the MIT license.
 
 ***
 
