@@ -15,7 +15,8 @@
     "helpers/helper-markdown": "https://raw.githubusercontent.com/helpers/helper-markdown/master/package.json",
     "helpers/helper-related": "https://raw.githubusercontent.com/helpers/helper-related/master/package.json",
     "helpers/helper-reflinks": "https://raw.githubusercontent.com/helpers/helper-reflinks/master/package.json",
-    "helpers/helper-date": "https://raw.githubusercontent.com/helpers/helper-date/master/package.json"
+    "helpers/helper-date": "https://raw.githubusercontent.com/helpers/helper-date/master/package.json",
+    "doowb/handlebars-helpers": "https://raw.githubusercontent.com/doowb/handlebars-helpers/docs/scaffolds.json"
   },
   "config": {
     "scaffold": {
@@ -29,7 +30,8 @@
         "helpers/helper-markdown": "https://raw.githubusercontent.com/helpers/helper-markdown/master/package.json",
         "helpers/helper-related": "https://raw.githubusercontent.com/helpers/helper-related/master/package.json",
         "helpers/helper-reflinks": "https://raw.githubusercontent.com/helpers/helper-reflinks/master/package.json",
-        "helpers/helper-date": "https://raw.githubusercontent.com/helpers/helper-date/master/package.json"
+        "helpers/helper-date": "https://raw.githubusercontent.com/helpers/helper-date/master/package.json",
+        "doowb/handlebars-helpers": "https://raw.githubusercontent.com/doowb/handlebars-helpers/docs/scaffolds.json"
       }
     }
   }

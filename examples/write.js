@@ -21,5 +21,6 @@ scaffolds.addFile('helpers/helper-markdown', 'https://raw.githubusercontent.com/
 scaffolds.addFile('helpers/helper-related', 'https://raw.githubusercontent.com/helpers/helper-related/master/package.json');
 scaffolds.addFile('helpers/helper-reflinks', 'https://raw.githubusercontent.com/helpers/helper-reflinks/master/package.json');
 scaffolds.addFile('helpers/helper-date', 'https://raw.githubusercontent.com/helpers/helper-date/master/package.json');
+scaffolds.addFile('doowb/handlebars-helpers', 'https://raw.githubusercontent.com/doowb/handlebars-helpers/docs/scaffolds.json');
 
 writeFile(__dirname + '/scaffolds.json', JSON.stringify(scaffolds, null, 2));
