@@ -76,24 +76,10 @@ Scaffolds.prototype.toJSON = function() {
   return this.props;
 };
 
-Scaffolds.prototype.save = function(dest, cb) {
-  utils.write(dest, JSON.stringify(this, null, 2), cb);
+Scaffolds.prototype.load = function(manifest) {
+  if (typeof manifest === 'object') {
+    return this.visit('set', manifest);
+  }
 };
 
 module.exports = Scaffolds;
-
-var scaffolds = new Scaffolds({name: 'test'})
-  .use(function (app) {
-    app.config('scaffold', {files: {}});
-    return function (key, file) {
-      app.config('scaffold.files.' + key.replace(/\./, '\\.'), file);
-    };
-  });
-
-scaffolds.addFile('foo', 'foo.hbs');
-scaffolds.addFile('bar', 'bar.hbs');
-scaffolds.addFile('baz', 'baz.hbs');
-scaffolds.addFile('bang', 'bang.hbs');
-scaffolds.addFile('boom', 'boom.hbs');
-
-scaffolds.save('scaffolds.json');
