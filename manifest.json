@@ -1,0 +1,26 @@
+{
+  "name": "test",
+  "description": "",
+  "version": "0.1.0",
+  "homepage": "",
+  "authors": [],
+  "license": "MIT",
+  "files": {
+    "foo": "foo.hbs",
+    "bar": "bar.hbs",
+    "baz": "baz.hbs",
+    "bang": "bang.hbs",
+    "boom": "boom.hbs"
+  },
+  "config": {
+    "scaffold": {
+      "files": {
+        "foo": "foo.hbs",
+        "bar": "bar.hbs",
+        "baz": "baz.hbs",
+        "bang": "bang.hbs",
+        "boom": "boom.hbs"
+      }
+    }
+  }
+}
