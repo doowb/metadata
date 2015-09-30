@@ -21,8 +21,12 @@
     "test": "mocha"
   },
   "dependencies": {
+    "async": "^1.4.2",
     "base-methods": "^0.2.6",
-    "lazy-cache": "^0.2.3"
+    "export-files": "^2.1.0",
+    "lazy-cache": "^0.2.3",
+    "request": "^2.64.0",
+    "url-regex": "^3.0.0"
   },
   "devDependencies": {
     "mocha": "*",

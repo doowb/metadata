@@ -33,6 +33,14 @@ Scaffolds.prototype.use = function(fn) {
   return this;
 };
 
+/**
+ * Add a property to the `Scaffolds` prototype
+ */
+
+Scaffolds.prototype.mixin = function(key, value) {
+  Scaffolds.prototype[key] = value;
+};
+
 Scaffolds.prototype.get = function(key) {
   if (!key || typeof key !== 'string') {
     return;

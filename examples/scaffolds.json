@@ -10,7 +10,12 @@
     "bar": "bar.hbs",
     "baz": "baz.hbs",
     "bang": "bang.hbs",
-    "boom": "boom.hbs"
+    "boom": "boom.hbs",
+    "helpers/helper-issue": "https://raw.githubusercontent.com/helpers/helper-issue/master/package.json",
+    "helpers/helper-markdown": "https://raw.githubusercontent.com/helpers/helper-markdown/master/package.json",
+    "helpers/helper-related": "https://raw.githubusercontent.com/helpers/helper-related/master/package.json",
+    "helpers/helper-reflinks": "https://raw.githubusercontent.com/helpers/helper-reflinks/master/package.json",
+    "helpers/helper-date": "https://raw.githubusercontent.com/helpers/helper-date/master/package.json"
   },
   "config": {
     "scaffold": {
@@ -19,7 +24,12 @@
         "bar": "bar.hbs",
         "baz": "baz.hbs",
         "bang": "bang.hbs",
-        "boom": "boom.hbs"
+        "boom": "boom.hbs",
+        "helpers/helper-issue": "https://raw.githubusercontent.com/helpers/helper-issue/master/package.json",
+        "helpers/helper-markdown": "https://raw.githubusercontent.com/helpers/helper-markdown/master/package.json",
+        "helpers/helper-related": "https://raw.githubusercontent.com/helpers/helper-related/master/package.json",
+        "helpers/helper-reflinks": "https://raw.githubusercontent.com/helpers/helper-reflinks/master/package.json",
+        "helpers/helper-date": "https://raw.githubusercontent.com/helpers/helper-date/master/package.json"
       }
     }
   }
