@@ -1,5 +1,5 @@
 /*!
- * manifest <https://github.com/doowb/manifest>
+ * scaffolds <https://github.com/doowb/scaffolds>
  *
  * Copyright (c) 2015, Brian Woodward.
  * Licensed under the MIT License.
@@ -11,7 +11,7 @@ var Base = require('base-methods');
 var utils = require('./lib/utils');
 var File = require('./lib/file');
 
-function Manifest (props, options) {
+function Scaffolds (props, options) {
   Base.call(this);
   this.options = options || {};
 
@@ -22,9 +22,9 @@ function Manifest (props, options) {
   this.set('config', {});
 }
 
-Base.extend(Manifest);
+Base.extend(Scaffolds);
 
-Manifest.prototype.use = function(fn) {
+Scaffolds.prototype.use = function(fn) {
   var plugin = fn.call(this, this, this.options);
   if (typeof plugin === 'function') {
     this.plugins.push(plugin);
@@ -33,14 +33,14 @@ Manifest.prototype.use = function(fn) {
   return this;
 };
 
-Manifest.prototype.get = function(key) {
+Scaffolds.prototype.get = function(key) {
   if (!key || typeof key !== 'string') {
     return;
   }
   return Base.prototype.get.call(this, 'props.' + key);
 };
 
-Manifest.prototype.set = function(key, val) {
+Scaffolds.prototype.set = function(key, val) {
   if (!key) return this;
   if (typeof key === 'object') {
     this.visit('set', key);
@@ -51,7 +51,7 @@ Manifest.prototype.set = function(key, val) {
   return this;
 };
 
-Manifest.prototype.addFile = function(key, file) {
+Scaffolds.prototype.addFile = function(key, file) {
   if (typeof file === 'object') {
     file = new File(key, file);
   }
@@ -66,23 +66,23 @@ Manifest.prototype.addFile = function(key, file) {
   }.bind(this));
 };
 
-Manifest.prototype.config = function(key, val) {
+Scaffolds.prototype.config = function(key, val) {
   if (arguments.length === 0) return this.get('config');
   if (arguments.length === 1) return this.get('config.' + key);
   return this.set('config.' + key, val);
 };
 
-Manifest.prototype.toJSON = function() {
+Scaffolds.prototype.toJSON = function() {
   return this.props;
 };
 
-Manifest.prototype.save = function(dest, cb) {
+Scaffolds.prototype.save = function(dest, cb) {
   utils.write(dest, JSON.stringify(this, null, 2), cb);
 };
 
-module.exports = Manifest;
+module.exports = Scaffolds;
 
-var manifest = new Manifest({name: 'test'})
+var scaffolds = new Scaffolds({name: 'test'})
   .use(function (app) {
     app.config('scaffold', {files: {}});
     return function (key, file) {
@@ -90,10 +90,10 @@ var manifest = new Manifest({name: 'test'})
     };
   });
 
-manifest.addFile('foo', 'foo.hbs');
-manifest.addFile('bar', 'bar.hbs');
-manifest.addFile('baz', 'baz.hbs');
-manifest.addFile('bang', 'bang.hbs');
-manifest.addFile('boom', 'boom.hbs');
+scaffolds.addFile('foo', 'foo.hbs');
+scaffolds.addFile('bar', 'bar.hbs');
+scaffolds.addFile('baz', 'baz.hbs');
+scaffolds.addFile('bang', 'bang.hbs');
+scaffolds.addFile('boom', 'boom.hbs');
 
-manifest.save('manifest.json');
+scaffolds.save('scaffolds.json');
