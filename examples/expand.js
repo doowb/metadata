@@ -10,5 +10,5 @@ scaffolds.load(require('./scaffolds.json'));
 scaffolds.expand(scaffolds.toJSON(), function (err, data) {
   if (err) return console.error('ERROR', err);
   scaffolds.load(data);
-  console.log(scaffolds.toJSON());
+  console.log(JSON.stringify(scaffolds, null, 2));
 });
