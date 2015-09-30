@@ -10,7 +10,8 @@
   },
   "license": "MIT",
   "files": [
-    "index.js"
+    "index.js",
+    "lib/"
   ],
   "main": "index.js",
   "engines": {
@@ -19,12 +20,12 @@
   "scripts": {
     "test": "mocha"
   },
-  "devDependencies": {
-    "mocha": "*"
-  },
   "dependencies": {
     "base-methods": "^0.2.6",
     "lazy-cache": "^0.2.3",
     "write": "^0.2.1"
+  },
+  "devDependencies": {
+    "mocha": "*"
   }
 }
