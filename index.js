@@ -7,19 +7,24 @@
 
 'use strict';
 
-var Base = require('base-methods');
-var utils = require('./lib/utils');
-var File = require('./lib/file');
+var Base = require('base-methods').create('cache');
+var Scaffold = require('scaffold');
 
-function Scaffolds (props, options) {
+var utils = require('./lib/utils');
+
+function Scaffolds (cache, options) {
+  if (!(this instanceof Scaffolds)) {
+    return new Scaffolds(cache, options);
+  }
   Base.call(this);
   this.options = options || {};
 
-  this.define('props', props || {});
-  this.define('plugins', []);
+  utils.define(this, 'cache', cache || {});
+  utils.define(this, 'plugins', []);
 
   utils.defaultProperties(this);
   this.set('config', {});
+  this.set('isScaffolds', true);
 }
 
 Base.extend(Scaffolds);
@@ -41,52 +46,36 @@ Scaffolds.prototype.mixin = function(key, value) {
   Scaffolds.prototype[key] = value;
 };
 
-Scaffolds.prototype.get = function(key) {
-  if (!key || typeof key !== 'string') {
-    return;
-  }
-  return Base.prototype.get.call(this, 'props.' + key);
-};
-
-Scaffolds.prototype.set = function(key, val) {
-  if (!key) return this;
-  if (typeof key === 'object') {
-    this.visit('set', key);
-  } else {
-    if (typeof key !== 'string') return this;
-    Base.prototype.set.call(this, 'props.' + key, val);
-  }
-  return this;
-};
-
-Scaffolds.prototype.addFile = function(key, file) {
-  if (typeof file === 'object') {
-    file = new File(key, file);
-  }
-  this.props.files[key] = file;
-
+Scaffolds.prototype.addScaffold = function(key, config) {
+  var scaffold = new Scaffold(config);
+  scaffold.key = scaffold.key || key;
+  this.cache.scaffolds[key] = scaffold;
   this.plugins.forEach(function (fn) {
-    if (typeof file === 'object') {
-      file.use(fn, this.options);
-    } else {
-      fn.call(this, key, file, this.options);
-    }
+    fn.call(this, scaffold, this.options);
   }.bind(this));
 };
 
-Scaffolds.prototype.config = function(key, val) {
-  if (arguments.length === 0) return this.get('config');
-  if (arguments.length === 1) return this.get('config.' + key);
-  return this.set('config.' + key, val);
+Scaffolds.prototype.addScaffolds = function(config) {
+  return this.visit('addScaffold', config);
 };
 
 Scaffolds.prototype.toJSON = function() {
-  return this.props;
+  return this.cache;
 };
 
 Scaffolds.prototype.load = function(manifest) {
   if (typeof manifest === 'object') {
-    return this.visit('set', manifest);
+    if (manifest.isScaffolds) {
+      this.cache = manifest;
+      return this;
+    }
+    var scaffolds = {};
+    if (manifest.hasOwnProperty('scaffolds')) {
+      scaffolds = manifest.scaffolds;
+      delete manifest.scaffolds;
+    }
+    return this.visit('set', manifest)
+      .addScaffolds(scaffolds);
   }
 };
 

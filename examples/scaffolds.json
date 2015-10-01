@@ -5,34 +5,246 @@
   "homepage": "",
   "authors": [],
   "license": "MIT",
-  "files": {
-    "foo": "foo.hbs",
-    "bar": "bar.hbs",
-    "baz": "baz.hbs",
-    "bang": "bang.hbs",
-    "boom": "boom.hbs",
-    "helpers/helper-issue": "https://raw.githubusercontent.com/helpers/helper-issue/master/package.json",
-    "helpers/helper-markdown": "https://raw.githubusercontent.com/helpers/helper-markdown/master/package.json",
-    "helpers/helper-related": "https://raw.githubusercontent.com/helpers/helper-related/master/package.json",
-    "helpers/helper-reflinks": "https://raw.githubusercontent.com/helpers/helper-reflinks/master/package.json",
-    "helpers/helper-date": "https://raw.githubusercontent.com/helpers/helper-date/master/package.json",
-    "doowb/handlebars-helpers": "https://raw.githubusercontent.com/doowb/handlebars-helpers/docs/scaffolds.json"
-  },
-  "config": {
-    "scaffold": {
-      "files": {
-        "foo": "foo.hbs",
-        "bar": "bar.hbs",
-        "baz": "baz.hbs",
-        "bang": "bang.hbs",
-        "boom": "boom.hbs",
-        "helpers/helper-issue": "https://raw.githubusercontent.com/helpers/helper-issue/master/package.json",
-        "helpers/helper-markdown": "https://raw.githubusercontent.com/helpers/helper-markdown/master/package.json",
-        "helpers/helper-related": "https://raw.githubusercontent.com/helpers/helper-related/master/package.json",
-        "helpers/helper-reflinks": "https://raw.githubusercontent.com/helpers/helper-reflinks/master/package.json",
-        "helpers/helper-date": "https://raw.githubusercontent.com/helpers/helper-date/master/package.json",
-        "doowb/handlebars-helpers": "https://raw.githubusercontent.com/doowb/handlebars-helpers/docs/scaffolds.json"
-      }
+  "scaffolds": {
+    "foo": {
+      "isScaffold": true,
+      "files": [
+        {
+          "src": [
+            "foo.hbs"
+          ],
+          "options": {},
+          "name": "scaffold",
+          "dest": ""
+        }
+      ],
+      "options": {},
+      "key": "foo"
+    },
+    "bar": {
+      "isScaffold": true,
+      "files": [
+        {
+          "src": [
+            "bar.hbs"
+          ],
+          "options": {},
+          "name": "scaffold",
+          "dest": ""
+        }
+      ],
+      "options": {},
+      "key": "bar"
+    },
+    "baz": {
+      "isScaffold": true,
+      "files": [
+        {
+          "src": [
+            "baz.hbs"
+          ],
+          "options": {},
+          "name": "scaffold",
+          "dest": ""
+        }
+      ],
+      "options": {},
+      "key": "baz"
+    },
+    "bang": {
+      "isScaffold": true,
+      "files": [
+        {
+          "src": [
+            "bang.hbs"
+          ],
+          "options": {},
+          "name": "scaffold",
+          "dest": ""
+        }
+      ],
+      "options": {},
+      "key": "bang"
+    },
+    "boom": {
+      "isScaffold": true,
+      "files": [
+        {
+          "src": [
+            "boom.hbs"
+          ],
+          "options": {},
+          "name": "scaffold",
+          "dest": ""
+        }
+      ],
+      "options": {},
+      "key": "boom"
+    },
+    "helpers/helper-issue": {
+      "isScaffold": true,
+      "files": [
+        {
+          "src": [
+            "https://raw.githubusercontent.com/helpers/helper-issue/master/package.json"
+          ],
+          "options": {},
+          "name": "scaffold",
+          "dest": ""
+        }
+      ],
+      "options": {},
+      "key": "helpers/helper-issue"
+    },
+    "helpers/helper-markdown": {
+      "isScaffold": true,
+      "files": [
+        {
+          "src": [
+            "https://raw.githubusercontent.com/helpers/helper-markdown/master/package.json"
+          ],
+          "options": {},
+          "name": "scaffold",
+          "dest": ""
+        }
+      ],
+      "options": {},
+      "key": "helpers/helper-markdown"
+    },
+    "helpers/helper-related": {
+      "isScaffold": true,
+      "files": [
+        {
+          "src": [
+            "https://raw.githubusercontent.com/helpers/helper-related/master/package.json"
+          ],
+          "options": {},
+          "name": "scaffold",
+          "dest": ""
+        }
+      ],
+      "options": {},
+      "key": "helpers/helper-related"
+    },
+    "helpers/helper-reflinks": {
+      "isScaffold": true,
+      "files": [
+        {
+          "src": [
+            "https://raw.githubusercontent.com/helpers/helper-reflinks/master/package.json"
+          ],
+          "options": {},
+          "name": "scaffold",
+          "dest": ""
+        }
+      ],
+      "options": {},
+      "key": "helpers/helper-reflinks"
+    },
+    "helpers/helper-date": {
+      "isScaffold": true,
+      "files": [
+        {
+          "src": [
+            "https://raw.githubusercontent.com/helpers/helper-date/master/package.json"
+          ],
+          "options": {},
+          "name": "scaffold",
+          "dest": ""
+        }
+      ],
+      "options": {},
+      "key": "helpers/helper-date"
+    },
+    "doowb/handlebars-helpers": {
+      "isScaffold": true,
+      "files": [
+        {
+          "src": [
+            "https://raw.githubusercontent.com/doowb/handlebars-helpers/docs/scaffolds.json"
+          ],
+          "options": {},
+          "name": "scaffold",
+          "dest": ""
+        }
+      ],
+      "options": {},
+      "key": "doowb/handlebars-helpers"
+    },
+    "app": {
+      "isScaffold": true,
+      "files": [
+        {
+          "src": [
+            "index.js",
+            "lib/plugins/expand.js",
+            "lib/plugins/index.js",
+            "lib/plugins/resolve.js",
+            "lib/utils.js"
+          ],
+          "options": {},
+          "name": "scaffold",
+          "dest": ""
+        }
+      ],
+      "options": {},
+      "key": "app"
+    },
+    "examples": {
+      "isScaffold": true,
+      "options": {
+        "cwd": "examples",
+        "flatten": true,
+        "expand": true
+      },
+      "files": [
+        {
+          "options": {
+            "cwd": "examples",
+            "flatten": true,
+            "expand": true
+          },
+          "src": [
+            "examples/expand.js"
+          ],
+          "dest": "expand.js"
+        },
+        {
+          "options": {
+            "cwd": "examples",
+            "flatten": true,
+            "expand": true
+          },
+          "src": [
+            "examples/read.js"
+          ],
+          "dest": "read.js"
+        },
+        {
+          "options": {
+            "cwd": "examples",
+            "flatten": true,
+            "expand": true
+          },
+          "src": [
+            "examples/resolve.js"
+          ],
+          "dest": "resolve.js"
+        },
+        {
+          "options": {
+            "cwd": "examples",
+            "flatten": true,
+            "expand": true
+          },
+          "src": [
+            "examples/write.js"
+          ],
+          "dest": "write.js"
+        }
+      ],
+      "key": "examples"
     }
-  }
+  },
+  "config": {}
 }
