@@ -23,7 +23,6 @@
   "dependencies": {
     "async": "^1.4.2",
     "base-methods": "^0.2.8",
-    "define-property": "^0.2.5",
     "request": "^2.64.0",
     "scaffold": "^0.1.2",
     "url-regex": "^3.0.0"
