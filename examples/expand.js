@@ -1,16 +1,16 @@
 'use strict';
 
-var Scaffolds = require('../');
+var Docket = require('../');
 var plugins = require('../lib/plugins');
-var scaffolds = new Scaffolds();
-scaffolds.use(plugins.resolve());
-scaffolds.use(plugins.expand());
+var docket = new Docket();
+docket.use(plugins.resolve());
+docket.use(plugins.expand());
 
-var manifest = require('./scaffolds.json');
-scaffolds.load(manifest);
+var manifest = require('./manifest.json');
+docket.load(manifest);
 
-scaffolds.expand(scaffolds.toJSON(), function (err, data) {
+docket.expand(docket.toJSON(), function (err, data) {
   if (err) return console.error('ERROR', err);
-  scaffolds.load(data);
-  console.log(JSON.stringify(scaffolds, null, 2));
+  docket.load(data);
+  console.log(JSON.stringify(docket, null, 2));
 });

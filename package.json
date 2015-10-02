@@ -1,12 +1,12 @@
 {
-  "name": "scaffolds",
-  "description": "Make and read scaffold manifest files.",
+  "name": "docket",
+  "description": "Create manifests to share between projects.",
   "version": "0.1.0",
-  "homepage": "https://github.com/doowb/scaffolds",
+  "homepage": "https://github.com/doowb/docket",
   "author": "Brian Woodward (https://github.com/doowb)",
-  "repository": "doowb/scaffolds",
+  "repository": "doowb/docket",
   "bugs": {
-    "url": "https://github.com/doowb/scaffolds/issues"
+    "url": "https://github.com/doowb/docket/issues"
   },
   "license": "MIT",
   "files": [

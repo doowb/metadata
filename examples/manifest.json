@@ -5,7 +5,7 @@
   "homepage": "",
   "authors": [],
   "license": "MIT",
-  "scaffolds": {
+  "targets": {
     "foo": {
       "isScaffold": true,
       "files": [
@@ -161,7 +161,7 @@
       "files": [
         {
           "src": [
-            "https://raw.githubusercontent.com/doowb/handlebars-helpers/docs/scaffolds.json"
+            "https://raw.githubusercontent.com/doowb/handlebars-helpers/docs/manifest.json"
           ],
           "options": {},
           "name": "scaffold",
@@ -246,5 +246,6 @@
       "key": "examples"
     }
   },
-  "config": {}
+  "config": {},
+  "isDocket": true
 }

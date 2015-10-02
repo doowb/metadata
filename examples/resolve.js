@@ -1,13 +1,13 @@
 'use strict';
 
-var Scaffolds = require('../');
+var Docket = require('../');
 var plugins = require('../lib/plugins');
-var scaffolds = new Scaffolds();
-scaffolds.use(plugins.resolve());
-scaffolds.load(require('./scaffolds.json'));
+var manifest = new Docket();
+manifest.use(plugins.resolve());
+manifest.load(require('./manifest.json'));
 
-scaffolds.resolve('https://raw.githubusercontent.com/doowb/capture-stream/master/package.json', function (err, data) {
+manifest.resolve('https://raw.githubusercontent.com/doowb/capture-stream/master/package.json', function (err, data) {
   if (err) return console.error('ERROR', err);
-  scaffolds.load(data);
-  console.log(scaffolds.toJSON());
+  manifest.load(data);
+  console.log(manifest.toJSON());
 });

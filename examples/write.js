@@ -1,9 +1,9 @@
 
 
 var writeFile = require('write');
-var Scaffolds = require('../');
+var Docket = require('../');
 
-var scaffolds = new Scaffolds({name: 'test'})
+var manifest = new Docket({name: 'test'})
   // .use(function (app) {
   //   app.set('config.scaffold', {files: {}});
   //   return function (scaffold) {
@@ -11,23 +11,23 @@ var scaffolds = new Scaffolds({name: 'test'})
   //   };
   // });
 
-scaffolds.addScaffold('foo', 'foo.hbs');
-scaffolds.addScaffold('bar', 'bar.hbs');
-scaffolds.addScaffold('baz', 'baz.hbs');
-scaffolds.addScaffold('bang', 'bang.hbs');
-scaffolds.addScaffold('boom', 'boom.hbs');
-scaffolds.addScaffold('helpers/helper-issue', 'https://raw.githubusercontent.com/helpers/helper-issue/master/package.json');
-scaffolds.addScaffold('helpers/helper-markdown', 'https://raw.githubusercontent.com/helpers/helper-markdown/master/package.json');
-scaffolds.addScaffold('helpers/helper-related', 'https://raw.githubusercontent.com/helpers/helper-related/master/package.json');
-scaffolds.addScaffold('helpers/helper-reflinks', 'https://raw.githubusercontent.com/helpers/helper-reflinks/master/package.json');
-scaffolds.addScaffold('helpers/helper-date', 'https://raw.githubusercontent.com/helpers/helper-date/master/package.json');
-scaffolds.addScaffold('doowb/handlebars-helpers', 'https://raw.githubusercontent.com/doowb/handlebars-helpers/docs/scaffolds.json');
+manifest.addScaffold('foo', 'foo.hbs');
+manifest.addScaffold('bar', 'bar.hbs');
+manifest.addScaffold('baz', 'baz.hbs');
+manifest.addScaffold('bang', 'bang.hbs');
+manifest.addScaffold('boom', 'boom.hbs');
+manifest.addScaffold('helpers/helper-issue', 'https://raw.githubusercontent.com/helpers/helper-issue/master/package.json');
+manifest.addScaffold('helpers/helper-markdown', 'https://raw.githubusercontent.com/helpers/helper-markdown/master/package.json');
+manifest.addScaffold('helpers/helper-related', 'https://raw.githubusercontent.com/helpers/helper-related/master/package.json');
+manifest.addScaffold('helpers/helper-reflinks', 'https://raw.githubusercontent.com/helpers/helper-reflinks/master/package.json');
+manifest.addScaffold('helpers/helper-date', 'https://raw.githubusercontent.com/helpers/helper-date/master/package.json');
+manifest.addScaffold('doowb/handlebars-helpers', 'https://raw.githubusercontent.com/doowb/handlebars-helpers/docs/manifest.json');
 
-scaffolds.addScaffolds({
+manifest.addScaffolds({
   app: {src: ['**/*.js', '!examples/**', '!node_modules/**']},
   examples: {options: {cwd: 'examples', flatten: true, expand: true}, src: ['**/*.js']}
 });
 
-// console.log(JSON.stringify(scaffolds, null, 2));
+// console.log(JSON.stringify(manifest, null, 2));
 
-writeFile(__dirname + '/scaffolds.json', JSON.stringify(scaffolds, null, 2));
+writeFile(__dirname + '/manifest.json', JSON.stringify(manifest, null, 2));
