@@ -3,8 +3,10 @@
   "description": "",
   "version": "0.1.0",
   "homepage": "",
+  "repository": "",
   "authors": [],
   "license": "MIT",
+  "dependencies": {},
   "targets": {
     "foo": {
       "isScaffold": true,
