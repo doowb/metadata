@@ -7,7 +7,7 @@
 
 'use strict';
 
-var Base = require('base-methods').create('cache');
+var Base = require('base-methods').namespace('cache');
 var Scaffold = require('scaffold');
 
 var utils = require('./lib/utils');
@@ -19,8 +19,8 @@ function Scaffolds (cache, options) {
   Base.call(this);
   this.options = options || {};
 
-  utils.define(this, 'cache', cache || {});
-  utils.define(this, 'plugins', []);
+  this.define('cache', cache || {});
+  this.define('plugins', []);
 
   utils.defaultProperties(this);
   this.set('config', {});

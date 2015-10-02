@@ -24,12 +24,12 @@
     "async": "^1.4.2",
     "base-methods": "^0.2.8",
     "define-property": "^0.2.5",
-    "export-files": "^2.1.0",
     "request": "^2.64.0",
     "scaffold": "^0.1.2",
     "url-regex": "^3.0.0"
   },
   "devDependencies": {
+    "lazy-cache": "^0.2.3",
     "mocha": "*",
     "write": "^0.2.1"
   }
