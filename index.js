@@ -46,7 +46,18 @@ Docket.prototype.mixin = function(key, value) {
   Docket.prototype[key] = value;
 };
 
-Docket.prototype.addScaffold = function(key, config) {
+Docket.prototype.addDependency = function(key, val) {
+  if (typeof key === 'object') {
+    return this.visit('addDependency', key);
+  }
+  return this.set('dependencies.' + key, val);
+};
+
+Docket.prototype.addDependencies = function(deps) {
+  return this.visit('addDependency', deps);
+};
+
+Docket.prototype.addTarget = function(key, config) {
   var scaffold = new Scaffold(config);
   scaffold.key = scaffold.key || key;
   this.cache.targets[key] = scaffold;
@@ -55,8 +66,8 @@ Docket.prototype.addScaffold = function(key, config) {
   }.bind(this));
 };
 
-Docket.prototype.addScaffolds = function(config) {
-  return this.visit('addScaffold', config);
+Docket.prototype.addTargets = function(config) {
+  return this.visit('addTarget', config);
 };
 
 Docket.prototype.toJSON = function() {
@@ -75,7 +86,7 @@ Docket.prototype.load = function(manifest) {
       delete manifest.targets;
     }
     return this.visit('set', manifest)
-      .addScaffolds(targets);
+      .addTargets(targets);
   }
 };
 
