@@ -3,7 +3,13 @@
   "description": "This repository contains things.",
   "version": "0.1.0",
   "homepage": "https://github.com/doowb/example-repo",
-  "author": "Brian Woodward (https://github.com/doowb)",
+  "authors": [
+    {
+      "author": "Brian Woodward",
+      "email": "brian.woodward@gmail.com",
+      "homepage": "https://github.com/doowb"
+    }
+  ],
   "repository": "doowb/scaffolds",
   "license": "MIT",
   "dependencies": {

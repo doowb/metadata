@@ -11,6 +11,8 @@ var Base = require('base-methods').namespace('cache');
 var Scaffold = require('scaffold');
 
 var utils = require('./lib/utils');
+var transforms = require('./lib/transforms');
+var loaders = require('./lib/loaders');
 
 function Docket (cache, options) {
   if (!(this instanceof Docket)) {
@@ -74,20 +76,12 @@ Docket.prototype.toJSON = function() {
   return this.cache;
 };
 
+Docket.prototype.normalize = function(manifest) {
+  transforms.call(this, manifest);
+};
+
 Docket.prototype.load = function(manifest) {
-  if (typeof manifest === 'object') {
-    if (manifest.isDocket) {
-      this.cache = manifest;
-      return this;
-    }
-    var targets = {};
-    if (manifest.hasOwnProperty('targets')) {
-      targets = manifest.targets;
-      delete manifest.targets;
-    }
-    return this.visit('set', manifest)
-      .addTargets(targets);
-  }
+  loaders.call(this, this.normalize(manifest));
 };
 
 module.exports = Docket;
