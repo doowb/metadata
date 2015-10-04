@@ -11,19 +11,19 @@ var manifest = new Docket({name: 'test'})
   //   };
   // });
 
-manifest.addScaffold('foo', 'foo.hbs');
-manifest.addScaffold('bar', 'bar.hbs');
-manifest.addScaffold('baz', 'baz.hbs');
-manifest.addScaffold('bang', 'bang.hbs');
-manifest.addScaffold('boom', 'boom.hbs');
-manifest.addScaffold('helpers/helper-issue', 'https://raw.githubusercontent.com/helpers/helper-issue/master/package.json');
-manifest.addScaffold('helpers/helper-markdown', 'https://raw.githubusercontent.com/helpers/helper-markdown/master/package.json');
-manifest.addScaffold('helpers/helper-related', 'https://raw.githubusercontent.com/helpers/helper-related/master/package.json');
-manifest.addScaffold('helpers/helper-reflinks', 'https://raw.githubusercontent.com/helpers/helper-reflinks/master/package.json');
-manifest.addScaffold('helpers/helper-date', 'https://raw.githubusercontent.com/helpers/helper-date/master/package.json');
-manifest.addScaffold('doowb/handlebars-helpers', 'https://raw.githubusercontent.com/doowb/handlebars-helpers/docs/manifest.json');
+manifest.addTarget('foo', 'foo.hbs');
+manifest.addTarget('bar', 'bar.hbs');
+manifest.addTarget('baz', 'baz.hbs');
+manifest.addTarget('bang', 'bang.hbs');
+manifest.addTarget('boom', 'boom.hbs');
+manifest.addTarget('helpers/helper-issue', 'https://raw.githubusercontent.com/helpers/helper-issue/master/package.json');
+manifest.addTarget('helpers/helper-markdown', 'https://raw.githubusercontent.com/helpers/helper-markdown/master/package.json');
+manifest.addTarget('helpers/helper-related', 'https://raw.githubusercontent.com/helpers/helper-related/master/package.json');
+manifest.addTarget('helpers/helper-reflinks', 'https://raw.githubusercontent.com/helpers/helper-reflinks/master/package.json');
+manifest.addTarget('helpers/helper-date', 'https://raw.githubusercontent.com/helpers/helper-date/master/package.json');
+manifest.addTarget('doowb/handlebars-helpers', 'https://raw.githubusercontent.com/doowb/handlebars-helpers/docs/manifest.json');
 
-manifest.addScaffolds({
+manifest.addTargets({
   app: {src: ['**/*.js', '!examples/**', '!node_modules/**']},
   examples: {options: {cwd: 'examples', flatten: true, expand: true}, src: ['**/*.js']}
 });

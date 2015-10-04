@@ -179,9 +179,11 @@
         {
           "src": [
             "index.js",
+            "lib/loaders.js",
             "lib/plugins/expand.js",
             "lib/plugins/index.js",
             "lib/plugins/resolve.js",
+            "lib/transforms/index.js",
             "lib/utils.js"
           ],
           "options": {},

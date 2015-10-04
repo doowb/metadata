@@ -77,7 +77,7 @@ Docket.prototype.toJSON = function() {
 };
 
 Docket.prototype.normalize = function(manifest) {
-  transforms.call(this, manifest);
+  return transforms.call(this, manifest);
 };
 
 Docket.prototype.load = function(manifest) {
