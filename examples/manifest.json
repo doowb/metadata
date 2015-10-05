@@ -180,10 +180,7 @@
           "src": [
             "index.js",
             "lib/loaders.js",
-            "lib/plugins/expand.js",
-            "lib/plugins/index.js",
-            "lib/plugins/resolve.js",
-            "lib/transforms/index.js",
+            "lib/transforms.js",
             "lib/utils.js"
           ],
           "options": {},
@@ -209,9 +206,33 @@
             "expand": true
           },
           "src": [
-            "examples/expand.js"
+            "examples/expand.js",
+            "examples/plugins/expand.js"
           ],
           "dest": "expand.js"
+        },
+        {
+          "options": {
+            "cwd": "examples",
+            "flatten": true,
+            "expand": true
+          },
+          "src": [
+            "examples/plugins/index.js"
+          ],
+          "dest": "index.js"
+        },
+        {
+          "options": {
+            "cwd": "examples",
+            "flatten": true,
+            "expand": true
+          },
+          "src": [
+            "examples/plugins/resolve.js",
+            "examples/resolve.js"
+          ],
+          "dest": "resolve.js"
         },
         {
           "options": {
@@ -223,17 +244,6 @@
             "examples/read.js"
           ],
           "dest": "read.js"
-        },
-        {
-          "options": {
-            "cwd": "examples",
-            "flatten": true,
-            "expand": true
-          },
-          "src": [
-            "examples/resolve.js"
-          ],
-          "dest": "resolve.js"
         },
         {
           "options": {

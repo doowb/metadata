@@ -1,7 +1,7 @@
 'use strict';
 
 var Docket = require('../');
-var plugins = require('../lib/plugins');
+var plugins = require('./plugins');
 var manifest = new Docket();
 manifest.use(plugins.resolve());
 manifest.load(require('./manifest.json'));

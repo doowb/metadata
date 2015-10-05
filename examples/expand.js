@@ -1,7 +1,7 @@
 'use strict';
 
 var Docket = require('../');
-var plugins = require('../lib/plugins');
+var plugins = require('./plugins');
 var docket = new Docket();
 docket.use(plugins.resolve());
 docket.use(plugins.expand());
