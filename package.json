@@ -21,16 +21,15 @@
     "test": "mocha"
   },
   "dependencies": {
-    "async": "^1.4.2",
-    "base-methods": "^0.2.8",
+    "base-methods": "^0.2.10",
     "extend-shallow": "^2.0.1",
-    "request": "^2.64.0",
-    "scaffold": "^0.1.2",
-    "url-regex": "^3.0.0"
+    "lazy-cache": "^0.2.3",
+    "scaffold": "^0.1.2"
   },
   "devDependencies": {
-    "lazy-cache": "^0.2.3",
-    "mocha": "*",
+    "async": "^1.4.2",
+    "request": "^2.64.0",
+    "url-regex": "^3.0.0",
     "write": "^0.2.1"
   }
 }
