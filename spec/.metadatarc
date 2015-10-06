@@ -1,0 +1,8 @@
+{
+  "main": "manifest.json",
+  "depth": 10,
+  "dest": "~/.scaffolds/dependencies/",
+  "cache": true,
+  "tol": "1d",
+  "preset": "github"
+}

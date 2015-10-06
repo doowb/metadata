@@ -1,5 +1,5 @@
 /*!
- * docket <https://github.com/doowb/docket>
+ * metadata <https://github.com/doowb/metadata>
  *
  * Copyright (c) 2015, Brian Woodward.
  * Licensed under the MIT License.
@@ -11,12 +11,10 @@ var Base = require('base-methods').namespace('cache');
 var Scaffold = require('scaffold');
 
 var utils = require('./lib/utils');
-var transforms = require('./lib/transforms');
-var loaders = require('./lib/loaders');
 
-function Docket (cache, options) {
-  if (!(this instanceof Docket)) {
-    return new Docket(cache, options);
+function Metadata (cache, options) {
+  if (!(this instanceof Metadata)) {
+    return new Metadata(cache, options);
   }
   Base.call(this);
   this.options = options || {};
@@ -26,12 +24,12 @@ function Docket (cache, options) {
 
   utils.defaultProperties(this);
   this.set('config', {});
-  this.set('isDocket', true);
+  this.set('isMetadata', true);
 }
 
-Base.extend(Docket);
+Base.extend(Metadata);
 
-Docket.prototype.use = function(fn) {
+Metadata.prototype.use = function(fn) {
   var plugin = fn.call(this, this, this.options);
   if (typeof plugin === 'function') {
     this.plugins.push(plugin);
@@ -41,25 +39,25 @@ Docket.prototype.use = function(fn) {
 };
 
 /**
- * Add a property to the `Docket` prototype
+ * Add a property to the `Metadata` prototype
  */
 
-Docket.prototype.mixin = function(key, value) {
-  Docket.prototype[key] = value;
+Metadata.prototype.mixin = function(key, value) {
+  Metadata.prototype[key] = value;
 };
 
-Docket.prototype.addDependency = function(key, val) {
+Metadata.prototype.addDependency = function(key, val) {
   if (typeof key === 'object') {
     return this.visit('addDependency', key);
   }
   return this.set('dependencies.' + key, val);
 };
 
-Docket.prototype.addDependencies = function(deps) {
+Metadata.prototype.addDependencies = function(deps) {
   return this.visit('addDependency', deps);
 };
 
-Docket.prototype.addTarget = function(key, config) {
+Metadata.prototype.addTarget = function(key, config) {
   var scaffold = new Scaffold(config);
   scaffold.key = scaffold.key || key;
   this.cache.targets[key] = scaffold;
@@ -68,20 +66,20 @@ Docket.prototype.addTarget = function(key, config) {
   }.bind(this));
 };
 
-Docket.prototype.addTargets = function(config) {
+Metadata.prototype.addTargets = function(config) {
   return this.visit('addTarget', config);
 };
 
-Docket.prototype.toJSON = function() {
+Metadata.prototype.toJSON = function() {
   return this.cache;
 };
 
-Docket.prototype.normalize = function(manifest) {
-  return transforms.call(this, manifest);
+Metadata.prototype.normalize = function(manifest) {
+  return utils.transforms.call(this, manifest);
 };
 
-Docket.prototype.load = function(manifest) {
-  loaders.call(this, this.normalize(manifest));
+Metadata.prototype.load = function(manifest) {
+  utils.loaders.call(this, this.normalize(manifest));
 };
 
-module.exports = Docket;
+module.exports = Metadata;

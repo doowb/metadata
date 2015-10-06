@@ -1,12 +1,12 @@
 {
-  "name": "docket",
-  "description": "Create manifests to share between projects.",
+  "name": "metadata",
+  "description": "Create manifest files to share between projects.",
   "version": "0.1.0",
-  "homepage": "https://github.com/doowb/docket",
+  "homepage": "https://github.com/doowb/metadata",
   "author": "Brian Woodward (https://github.com/doowb)",
-  "repository": "doowb/docket",
+  "repository": "doowb/metadata",
   "bugs": {
-    "url": "https://github.com/doowb/docket/issues"
+    "url": "https://github.com/doowb/metadata/issues"
   },
   "license": "MIT",
   "files": [
