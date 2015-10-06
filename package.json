@@ -21,9 +21,8 @@
     "test": "mocha"
   },
   "dependencies": {
-    "base-methods": "^0.2.10",
+    "base-methods": "^0.2.13",
     "base-options": "^0.3.0",
-    "extend-shallow": "^2.0.1",
     "lazy-cache": "^0.2.3",
     "mixin-deep": "^1.1.3",
     "scaffold": "^0.1.2"
