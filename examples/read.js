@@ -1,10 +1,10 @@
 'use strict';
 
-var Docket = require('../');
+var Metadata = require('../');
 var manifest = require('./manifest.json');
 console.log(manifest);
 
-var docket = new Docket();
-docket.load(manifest);
+var metadata = new Metadata();
+metadata.load(manifest);
 
-console.log(docket.toJSON());
+console.log(metadata.toJSON());
