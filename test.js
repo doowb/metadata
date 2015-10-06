@@ -178,4 +178,94 @@ describe('metadata', function () {
     };
     assert.deepEqual(metadata.cache.targets, expected);
   });
+
+  it('should return a manifest object from toJSON', function () {
+    var metadata = new Metadata();
+    metadata.addDependencies({
+      'foo': 'doowb/foo',
+      'bar': 'doowb/bar',
+      'baz': 'doowb/baz'
+    });
+    metadata.addTarget({
+      'foo': {src: 'foo.js'},
+      'bar': {src: 'bar.js'},
+      'baz': {src: 'baz.js'}
+    });
+    assert.deepEqual(metadata.toJSON(), metadata.cache);
+  });
+
+  it('should load an existing manifest object onto the cache', function () {
+    var metadata = new Metadata();
+    metadata.addDependencies({
+      'foo': 'doowb/foo',
+      'bar': 'doowb/bar',
+      'baz': 'doowb/baz'
+    });
+    metadata.addTarget({
+      'foo': {src: 'foo.js'},
+      'bar': {src: 'bar.js'},
+      'baz': {src: 'baz.js'}
+    });
+
+    var another = new Metadata();
+    another.load(metadata.toJSON());
+    assert.deepEqual(another.cache, metadata.cache);
+  });
+
+  describe('transforms', function () {
+    it('should load defaults when the manifest is not an object', function () {
+      var metadata = new Metadata();
+      metadata.load('foo');
+      assert.deepEqual(metadata.cache, { name: 'manifest',
+        description: '',
+        version: '0.1.0',
+        homepage: undefined,
+        repository: undefined,
+        authors: [],
+        license: 'MIT',
+        dependencies: {},
+        targets: {},
+        config: {},
+        isMetadata: true
+      });
+    });
+
+    it('should normalize an `author` array into `authors` array', function () {
+      var metadata = new Metadata();
+      var author = {author: 'Brian Woodward', email: 'brian.woodward@gmail.com', homepage: 'https://github.com/doowb'};
+      metadata.load({author: [author]});
+      assert.deepEqual(metadata.get('authors'), [author]);
+    });
+
+    it('should normalize an `author` object into `authors` array', function () {
+      var metadata = new Metadata();
+      var author = {author: 'Brian Woodward', email: 'brian.woodward@gmail.com', homepage: 'https://github.com/doowb'};
+      metadata.load({author: author});
+      assert.deepEqual(metadata.get('authors'), [author]);
+    });
+
+    it('should normalize an `authors` object into `authors` array', function () {
+      var metadata = new Metadata();
+      var author = {author: 'Brian Woodward', email: 'brian.woodward@gmail.com', homepage: 'https://github.com/doowb'};
+      metadata.load({authors: author});
+      assert.deepEqual(metadata.get('authors'), [author]);
+    });
+
+    it('should normalize an `author` string into `authors` array', function () {
+      var metadata = new Metadata();
+      var author = {author: 'Brian Woodward'};
+      metadata.load({author: 'Brian Woodward'});
+      assert.deepEqual(metadata.get('authors'), [author]);
+    });
+  });
+
+  describe('loaders', function () {
+    it('should concat `authors` on manifest to existing `authors`', function () {
+      var metadata = new Metadata();
+      metadata.set('authors', [{author: 'Jon Schlinkert'}]);
+      var author = {author: 'Brian Woodward'};
+      metadata.load({author: 'Brian Woodward'});
+      assert.deepEqual(metadata.get('authors'), [{author: 'Jon Schlinkert'}, {author: 'Brian Woodward'}]);
+    });
+  });
 });
