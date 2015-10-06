@@ -2,42 +2,185 @@
 
 > Create manifest files to share between projects.
 
-**WIP** Initial thoughts on scaffolds.
+**WIP** Initial thoughts on metadata.
 
-## Install with [npm](npmjs.org)
+Install with [npm](https://www.npmjs.com/)
 
-```bash
-npm i metadata --save
+```sh
+$ npm i metadata --save
 ```
 
 ## Usage
 
 ```js
-var metadata = require('metadata');
+var Metadata = require('metadata');
+```
+
+## API
+
+### [Metadata](index.js#L28)
+
+Create a new metadata instance.
+
+**Params**
+
+* `cache` **{Object}**: initial cache to use
+* `options` **{Object}**: Options to put on the instance.
+
+**Example**
+
+```js
+var metadata = new Metadata();
+```
+
+### [.use](index.js#L55)
+
+Use plugins on the metadata object. When a plugin returns a function,
+the function will be run against new targets that are added.
+
+**Params**
+
+* `fn` **{Function}**: Plugin function to run.
+* `returns` **{Object}** `this`: for chaining
+
+### [.mixin](index.js#L72)
+
+Add a property to the `Metadata` prototype
+
+**Params**
+
+* `key` **{String}**: Name of the property to add.
+* `value` **{*}**: Property to add to the prototype.
+
+### [.addDependency](index.js#L88)
+
+Add a dependency to the manifest.
+
+**Params**
+
+* `key` **{String}**: Name of the dependency to add.
+* `val` **{String}**: Location of the dependency to add (github repo, url);
+
+**Example**
+
+```js
+metadata.addDependency('foo', 'doowb/foo');
+```
+
+### [.addDependencies](index.js#L109)
+
+Add a has of dependencies to the manifest.
+
+**Params**
+
+* `deps` **{Object}**: Object hash of dependencies to add.
+
+**Example**
+
+```js
+metadata.addDependencies({
+  'foo': 'doowb/foo',
+  'bar': 'doowb/bar'
+});
+```
+
+### [.addTarget](index.js#L126)
+
+Add a new target configuration to the manifest. The configuration will be expanded using [scaffold][]
+
+**Params**
+
+* `key` **{String}**: Name of the target to add.
+* `config` **{Object}**: Object describing the configuration of the target.
+
+**Example**
+
+```js
+metadata.addTarget('app', {src: '*.js'});
+```
+
+### [.addTargets](index.js#L154)
+
+Add an object hash of targets to the manifest.
+
+**Params**
+
+* `config` **{Object}**: Object hash of target configurations to add.
+
+**Example**
+
+```js
+metadata.addTargets({
+  app: {src: '*.js'},
+  tests: {src: 'tests/*.js'},
+  docs: {src: 'docs/*.md'}
+});
+```
+
+### [.toJSON](index.js#L170)
+
+Return the actual manifest object to be used when writing out to a json file.
+
+* `returns` **{Object}**: Object representation of the manifest.
+
+**Example**
+
+```js
+fs.writeFileSync('manifest.json', JSON.stringify(metadata, null, 2));
+```
+
+### [.normalize](index.js#L187)
+
+Normalizes a manifest object by passing the manifest through a list of transforms.
+
+**Params**
+
+* `manifest` **{Object}**: Object representing a manifest to normalize.
+* `returns` **{Object}**: normalized manifest object
+
+**Example**
+
+```js
+metadata.normalize(require('./manifest.json'));
+```
+
+### [.load](index.js#L202)
+
+Load a manifest object onto the metadata cache.
+
+**Params**
+
+* `manifest` **{Object}**: Object representing a manifest to load onto the cache.
+
+**Example**
+
+```js
+metadata.load(require('./manifest.json'));
 ```
 
 ## Running tests
-Install dev dependencies.
 
-```bash
-npm i -d && npm test
+Install dev dependencies:
+
+```sh
+$ npm i -d && npm test
 ```
 
-
 ## Contributing
-Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/doowb/metadata/issues)
 
+Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/doowb/metadata/issues/new).
 
 ## Author
 
 **Brian Woodward**
- 
+
 + [github/doowb](https://github.com/doowb)
-+ [twitter/doowb](http://twitter.com/doowb) 
++ [twitter/doowb](http://twitter.com/doowb)
 
 ## License
+
 Copyright © 2015 Brian Woodward
-Released under the MIT license
+Released under the MIT license.
 
 ***
 
