@@ -8,6 +8,7 @@
 'use strict';
 
 var Base = require('base-methods').namespace('cache');
+var option = require('base-options');
 var Scaffold = require('scaffold');
 
 var utils = require('./lib/utils');
@@ -18,6 +19,7 @@ function Metadata (cache, options) {
   }
   Base.call(this);
   this.options = options || {};
+  this.use(option);
 
   this.define('cache', cache || {});
   this.define('plugins', []);
@@ -58,12 +60,16 @@ Metadata.prototype.addDependencies = function(deps) {
 };
 
 Metadata.prototype.addTarget = function(key, config) {
+  if (typeof key === 'object') {
+    return this.visit('addTarget', key);
+  }
   var scaffold = new Scaffold(config);
   scaffold.key = scaffold.key || key;
   this.cache.targets[key] = scaffold;
   this.plugins.forEach(function (fn) {
     fn.call(this, scaffold, this.options);
   }.bind(this));
+  return this;
 };
 
 Metadata.prototype.addTargets = function(config) {
